@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:847037830145:android:71c5775028ae0c970c9c00",
+        "mobilesdk_app_id": "1:847037830145:android:ed5f7e286f78a8000c9c00",
         "android_client_info": {
-          "package_name": "com.example.todo_app_auth"
+          "package_name": "com.firebase.todo_app_auth"
         }
       },
       "oauth_client": [],
