@@ -1,4 +1,4 @@
-package com.example.todo_app_auth
+package com.firebase.todo_app_auth
 
 import io.flutter.embedding.android.FlutterActivity
 
