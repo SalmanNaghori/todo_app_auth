@@ -47,9 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 log.d(document.data()! as Map<String, dynamic>);
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
-                return ListTile(
-                  title: Text(data['task']),
-                  subtitle: Text(data['number'].toString()),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: ListTile(
+                      title: Text(data['task']),
+                      subtitle: Text(data['number'].toString()),
+                    ),
+                  ),
                 );
               }).toList(),
             );
