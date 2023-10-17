@@ -24,6 +24,26 @@ class _HomeScreenState extends State<HomeScreen> {
         .catchError((error) => log.e(error));
   }
 
+  //Update data
+  Future<void> _updateData(String id) async {
+    CollectionReference tasks = FirebaseFirestore.instance.collection('tasks');
+    return tasks
+        .doc(id)
+        .update({"number": 30})
+        .then((value) => log.f("Data is updated${tasks}"))
+        .catchError((error) => log.e(error));
+  }
+
+  //Delete data
+  Future<void> _deleteData(String id) async {
+    CollectionReference tasks = FirebaseFirestore.instance.collection('tasks');
+    return tasks
+        .doc(id)
+        .delete()
+        .then((value) => log.f("Data is updated${tasks}"))
+        .catchError((error) => log.e(error));
+  }
+
   Logger log = Logger();
   @override
   Widget build(BuildContext context) {
@@ -47,12 +67,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 log.d(document.data()! as Map<String, dynamic>);
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    child: ListTile(
-                      title: Text(data['task']),
-                      subtitle: Text(data['number'].toString()),
+                return InkWell(
+                  onLongPress: () {
+                    _updateData(document.id);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: ListTile(
+                        title: Text(data['task']),
+                        subtitle: Text(data['number'].toString()),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            _deleteData(document.id);
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 );
