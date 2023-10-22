@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:todo_app_auth/theme/colors/light_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -47,7 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Logger log = Logger();
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: LightColors.kLightYellow,
       appBar: AppBar(
         title: const Text("data"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
